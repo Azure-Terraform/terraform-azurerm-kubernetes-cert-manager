@@ -21,6 +21,8 @@ resource "azurerm_role_definition" "cert_manager" {
                    "Microsoft.Network/dnszones/TXT/delete"]
     not_actions = []
   }
+
+  assignable_scopes = [data.azurerm_subscription.subscription.id]
 }
 
 resource "azurerm_role_assignment" "cert_manager" {
