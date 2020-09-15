@@ -1,9 +1,3 @@
-data "azurerm_dns_zone" "zone" {
-  for_each = var.domains
-  name                = each.key
-  resource_group_name = each.value.resource_group
-}
-
 data "azurerm_subscription" "subscription" {
   subscription_id = var.subscription_id
 }
@@ -28,18 +22,18 @@ resource "azurerm_role_definition" "cert_manager" {
     not_actions = []
   }
 
-  assignable_scopes = [data.azurerm_dns_zone.zone[each.key].id]
+  assignable_scopes = [each.value]
 }
 
 resource "azurerm_role_assignment" "cert_manager" {
   for_each           = var.domains
-  scope              = each.value.id
+  scope              = each.value
   role_definition_id = azurerm_role_definition.cert_manager[each.key].id
   principal_id       = azurerm_user_assigned_identity.cert_manager.principal_id
 }
 
 module "identity" {
-  source = "github.com/Azure-Terraform/terraform-azurerm-kubernetes.git//aad-pod-identity/identity?ref=v1.2.0"
+  source = "github.com/Azure-Terraform/terraform-azurerm-kubernetes-aad-pod-identity.git///identity?ref=v1.0.0""
 
   identity_name        = azurerm_user_assigned_identity.cert_manager.name
   identity_client_id   = azurerm_user_assigned_identity.cert_manager.client_id

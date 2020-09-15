@@ -60,11 +60,8 @@ variable "install_crds" {
 }
 
 variable "domains" {
-  description = "map of domains to domain ids and resource groups which certificates will be generated for"
-  type        = map(object({
-                  id             = string # id of dns zone 
-                  resource_group = string # name of resource group containing the dns zone
-                }))
+  description = "map of domains to domain ids"
+  type        = map(string)
   default     = {}
 }
 
