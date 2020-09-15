@@ -12,7 +12,7 @@ This module will use install cert-manager into a Kubernetes cluster and configur
 | Name | Version |
 |------|---------|
 | azurerm | n/a |
-| helm | n/a |
+| helm | >= 1.2.4 |
 
 ## Inputs
 
