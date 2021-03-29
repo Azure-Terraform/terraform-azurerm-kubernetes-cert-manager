@@ -28,7 +28,7 @@ resource "azurerm_role_definition" "cert_manager" {
 resource "azurerm_role_assignment" "cert_manager" {
   for_each           = var.domains
   scope              = each.value
-  role_definition_id = azurerm_role_definition.cert_manager[each.key].id
+  role_definition_id = azurerm_role_definition.cert_manager[each.key].role_definition_resource_id
   principal_id       = azurerm_user_assigned_identity.cert_manager.principal_id
 }
 
