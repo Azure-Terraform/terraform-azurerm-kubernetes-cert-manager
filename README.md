@@ -19,7 +19,7 @@ This module will use install cert-manager into a Kubernetes cluster and configur
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:-----:|
 | additional\_yaml\_config | yaml config for helm chart to be processed last | `string` | `""` | no |
-| cert\_manager\_version | cert-manager helm chart version | `string` | `"v0.15.0"` | no |
+| cert\_manager\_version | cert-manager helm chart version | `string` | `"v1.3.0"` | no |
 | create\_kubernetes\_namespace | create kubernetes namespace if not present | `bool` | `true` | no |
 | domains | map of domains to domain ids | `map(string)` | `{}` | no |
 | helm\_release\_name | helm release name | `string` | `"cert-manager"` | no |
