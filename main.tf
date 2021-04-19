@@ -50,9 +50,9 @@ resource "helm_release" "cert_manager" {
 
   values = [
     yamlencode({
-      installCRDs = "${var.install_crds}"
+      installCRDs = var.install_crds
       podLabels = {
-        aadpodidbinding = "${azurerm_user_assigned_identity.cert_manager.name}"
+        aadpodidbinding = azurerm_user_assigned_identity.cert_manager.name
       }
       podDnsPolicy = "None"
       podDnsConfig = {
