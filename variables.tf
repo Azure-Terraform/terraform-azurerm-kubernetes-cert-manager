@@ -8,6 +8,11 @@ variable "resource_group_name"{
   type        = string
 }
 
+variable "dns_resource_group_name"{
+  description = "Resource group name for dns zone"
+  type        = string
+}
+
 variable "location" {
   description = "Azure Region"
   type        = string
