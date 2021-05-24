@@ -80,7 +80,7 @@ resource "helm_release" issuer {
       server         = lookup(local.le_endpoint, each.value.letsencrypt_endpoint, each.value.letsencrypt_endpoint)
       secretName     = "cert-manager-issuer-${each.key}"
       subscriptionID = var.subscription_id
-      resourceGroup  = var.resource_group_name
+      resourceGroup  = var.dns_resource_group_name
       dnsZone        = each.value.domain
     })
   ]
